@@ -18,16 +18,10 @@ The LED strip should be connected to the 'D3' pin (signal) and the 'GND' pin on 
 
 Once the Arduino is flashed, it may be attached (via USB cable) to a USB port on the race timer (or computer that is running the RotorHazard server). RotorHazard server version 4.1.0 or later is required.
 
-On the Raspberry Pi, an attached LEDCtrlr module will be referenced with a serial port name like "/dev/ttyUSB0". The command "ls /dev/ttyUSB*" will show the current USB serial ports. The "src/server/config.json" file for the RotorHazard server will need to be modified to have an entry like this in the "LED" section:
-```
-		"SERIAL_CTRLR_PORT": "/dev/ttyUSB0",
-```
+On the Raspberry Pi, an attached LEDCtrlr module will be referenced with a serial port name like "/dev/ttyUSB0". The command "ls /dev/ttyUSB*" will show the current USB serial ports. In the RotorHazard web GUI, in "Settings | Advanced Settings | LED Hardware", the serial port name should be entered into the "Serial Controller Port" field.
 
-On a Windows computer, an attached LEDCtrlr module will be referenced with a serial port name like "COM3". The current ports may be viewed in the Windows Device Manager under "Ports (COM & LPT)" -- when the USB node is plugged in, its entry should appear.  It may be necessary to install or update its driver (named something like "USB-SERIAL"). The "src/server/config.json" file for the RotorHazard server will need to be modified to have an entry like this in the "LED" section:
-```
-		"SERIAL_CTRLR_PORT": "COM3",
-```
+On a Windows computer, an attached LEDCtrlr module will be referenced with a serial port name like "COM3". The current ports may be viewed in the Windows Device Manager under "Ports (COM & LPT)" -- when the USB node is plugged in, its entry should appear.  It may be necessary to install or update its driver (named something like "USB-SERIAL"). In the RotorHazard web GUI, in "Settings | Advanced Settings | LED Hardware", the serial port name should be entered into the "Serial Controller Port" field.
 
-The "LED_COUNT" entry in the "src/server/config.json" file should be updated to match the number of LEDs in the strip. If the LED colors appear incorrect, the "LED_STRIP" entry may be added or updated to match the strip, allowed values are:  'RGB', 'RBG', 'GRB', 'GBR', 'BRG', 'BGR' (default is 'GRB'). The other "LED_..." entries are not used with the LEDCtrlr.
+In that same "LED Hardware" section, the "Count" field should be updated to match the number of LEDs in the strip. If the LED colors appear incorrect, the "Strip Type" entry may be changed to match the strip (the default is 'GRB'). The other entries are not used with the LEDCtrlr.
 
 If the LEDs are not operating properly, check the RotorHazard server log file for errors.
